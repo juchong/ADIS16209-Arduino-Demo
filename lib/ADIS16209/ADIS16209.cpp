@@ -211,6 +211,6 @@ float ADIS16209::tempScale(int16_t sensorData)
 float ADIS16209::supplyScale(int16_t sensorData)
 {
   sensorData = sensorData & 0x3FFF; // Discard upper two bits
-  float finalData = (((sensorData - 10813) * -0.00030518) + 3.3); // Multiply by voltage scale. 3.3V = 0x2A3D
+  float finalData = sensorData * 0.000305176; // Multiply by 0.000305176 Volts/LSB)
   return finalData;
 }
